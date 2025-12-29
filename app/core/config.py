@@ -8,4 +8,6 @@ class Settings(BaseModel):
     JWT_SECRET: str = os.getenv("JWT_SECRET", "dev-secret")
     JWT_EXPIRE_MINUTES: int = int(os.getenv("JWT_EXPIRE_MINUTES", "60"))
 
+    SUPABASE_POSTS_BUCKET: str = os.getenv("SUPABASE_POSTS_BUCKET", "posts")
+
 settings = Settings()
