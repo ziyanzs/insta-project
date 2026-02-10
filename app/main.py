@@ -8,6 +8,7 @@ from app.db.supabase import supabase
 
 from app.routers.auth import router as auth_router
 from app.routers.posts import router as posts_router
+from app.routers.comments import router as comments_router
 
 app = FastAPI(title="Insta Clone API")
 
@@ -21,6 +22,7 @@ app.add_middleware(
 
 app.include_router(auth_router)
 app.include_router(posts_router)
+app.include_router(comments_router)
 
 @app.get("/db-check")
 def db_check():
@@ -29,3 +31,9 @@ def db_check():
         return {"ok": True, "data": res.data}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+    
+from app.ml.predictor import load_model_once
+
+@app.on_event("startup")
+def _startup():
+    load_model_once()

@@ -11,3 +11,7 @@ python-dotenv
 
 email-validator
 python-multipart
+
+scikit-learn 
+joblib
+deep-translator

@@ -9,5 +9,7 @@ class Settings(BaseModel):
     JWT_EXPIRE_MINUTES: int = int(os.getenv("JWT_EXPIRE_MINUTES", "60"))
 
     SUPABASE_POSTS_BUCKET: str = os.getenv("SUPABASE_POSTS_BUCKET", "posts")
+    ML_PIPELINE_PATH: str = os.getenv("ML_PIPELINE_PATH", "")
+
 
 settings = Settings()
